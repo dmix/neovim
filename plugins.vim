@@ -25,7 +25,7 @@ call plug#begin("~/vim/plugged")
 
     " Autocomplete / snippets
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'neoclide/coc-pairs'
+    " Plug 'neoclide/coc-pairs'
 
     " Plug 'Shougo/deoplete.nvim',            { 'do':  ':UpdateRemotePlugins' }
     " Plug 'billyvg/deoplete-import-js',      { 'for': ['vue', 'javascript'] }
@@ -43,6 +43,7 @@ call plug#begin("~/vim/plugged")
     Plug 'dmix/vim-hybrid'
     Plug 'joshdick/onedark.vim'
     Plug 'nanotech/jellybeans.vim'
+    Plug 'sheerun/vim-polyglot'
 
     " Statusbar 
     " Workaround https://github.com/vim-airline/vim-airline/issues/1325
@@ -488,17 +489,23 @@ let g:jellybeans_overrides = {
 \                 'attr': '' },
 \}
 
+
 " Themes 
 " -----------------------------------------------------------------------------
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
+
+let g:hybrid_custom_term_colors = 1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
+let g:onedark_terminal_italics=0
+let g:onedark_termcolors = 1
+let g:onedark_color_overrides = {
+\ "black": {"gui": "#121419", "cterm": "235", "cterm16": "0" },
+\}
+let g:lightline = {
+\ 'colorscheme': 'onedark',
+\ }
+let g:airline_theme='onedark'
+set background=dark
+syntax on
+colorscheme onedark
+autocmd ColorScheme * call onedark#set("CursorLine", { "bg": { "gui": "#000000", "cterm": 235, "ctergm16": 0 } })
