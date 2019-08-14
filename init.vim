@@ -136,7 +136,7 @@ augroup END
 
 augroup tabbing
     " Custom formatting
-    autocmd FileType go,eelixir,vim,zsh,rust,javascript,vue,html,eelixir,typescript set tabstop=4 shiftwidth=4 expandtab
+    autocmd FileType yaml,go,eelixir,vim,zsh,rust,javascript,vue,html,eelixir,typescript,json set tabstop=4 shiftwidth=4 expandtab
     autocmd FileType make,erlang setlocal noexpandtab
     autocmd FileType eruby,sass,scss,css set shiftwidth=2 expandtab
 augroup END
