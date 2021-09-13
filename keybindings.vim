@@ -7,7 +7,36 @@
 
 if has('python3')
     let g:ctrlp_map = ''
-    nnoremap <silent> <C-p> :Denite file_rec/git<CR>
+
+   call denite#custom#map(
+            \ 'normal',
+            \ '<C-l>',
+            \ '<denite:enter_mode:insert>',
+            \ 'noremap'
+            \)
+    call denite#custom#map(
+            \ 'insert',
+            \ '<C-l>',
+            \ '<denite:enter_mode:normal>',
+            \ 'noremap'
+            \)
+    nnoremap <silent> <Leader>p :DeniteProjectDir file/rec<CR>
+    nnoremap <silent> <Leader>b :Denite buffer<CR>
+    nmap <Leader>bb :Denite buffer<CR>
+    nnoremap <silent> <Leader>l :Denite buffer<CR>
+    nnoremap <silent> <Leader>j :bn<CR><esc>
+    nnoremap <silent> <Leader>k :bp<CR><esc>
+    nnoremap <silent> <Leader>g :e#<CR><esc>
+    nnoremap <silent> <Leader>1 :1b<CR><esc>
+    nnoremap <silent> <Leader>2 :2b<CR><esc>
+    nnoremap <silent> <Leader>3 :3b<CR><esc>
+    nnoremap <silent> <Leader>4 :4b<CR><esc>
+    nnoremap <silent> <Leader>5 :5b<CR><esc>
+    nnoremap <silent> <Leader>6 :6b<CR><esc>
+    nnoremap <silent> <Leader>7 :7b<CR><esc>
+    nnoremap <silent> <Leader>8 :8b<CR><esc>
+    nnoremap <silent> <Leader>9 :9b<CR><esc>
+    nnoremap <silent> <Leader>0 :10b<CR><esc>
 endif
 
 " Bullets
@@ -15,7 +44,6 @@ endif
 
 " TODO: shortcuts to insert bullet points
 " ◦•‣
-
 
 " Config shortcut
 " -----------------------------------------------------------------------------
@@ -68,11 +96,6 @@ imap <c-v> <esc>"+pa
 " Buffers
 " -----------------------------------------------------------------------------
 
-nmap <Leader>bn :bn<CR>
-nmap <Leader>bb :buffers<CR>
-nmap <Leader>bp :bp<CR>
-
-
 " TODO: Rename/Refactor
 " -----------------------------------------------------------------------------
 " - Find and replace:
@@ -84,3 +107,8 @@ nmap <Leader>bp :bp<CR>
 " - Interface:
 "    call g:RenameModel("Comments", "Comment", "comments", "comment", "Categories", "Category", "categories", "category")
 
+
+" inoremap <silent> <Leader>0 <Esc>:call <SID>align()<CR>a
+
+nnoremap alnc <Esc> :Tab /,\zs<CR>
+nnoremap alns <Esc> :Tab /:\zs<CR>

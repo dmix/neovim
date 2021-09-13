@@ -20,77 +20,81 @@
 " Plugins
 " -----------------------------------------------------------------------------
 call plug#begin("~/vim/plugged")
-    " Work around Vim corruption
-    " Plug 'bruno-/vim-alt-mappings'
 
     " Autocomplete / snippets
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " Plug 'neoclide/coc-pairs'
+    Plug 'neoclide/coc.nvim', {'branch': 'master'}
+    Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 
-    " Plug 'Shougo/deoplete.nvim',            { 'do':  ':UpdateRemotePlugins' }
-    " Plug 'billyvg/deoplete-import-js',      { 'for': ['vue', 'javascript'] }
-    " Plug 'fishbullet/deoplete-ruby',        { 'for': ['ruby'] }
-    " Plug 'sebastianmarkow/deoplete-rust',   { 'for': ['rust'] }
-    " Plug 'zchee/deoplete-zsh',              { 'for': ['zsh'] }
-    Plug 'Shougo/denite.nvim'
+    Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+    Plug 'bronson/vim-trailing-whitespace'
     " Plug 'Shougo/neosnippet.vim'
     " Plug 'Shougo/neosnippet-snippets'
-    Plug 'honza/vim-snippets'
 
     " Colorschemes
-    Plug 'cocopon/iceberg.vim'
-    Plug 'dmix/vim-hybrid'
-    Plug 'joshdick/onedark.vim'
-    Plug 'nanotech/jellybeans.vim'
-    Plug 'sheerun/vim-polyglot'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'navarasu/onedark.nvim'
 
-    " Statusbar 
-    " Workaround https://github.com/vim-airline/vim-airline/issues/1325
+    " Statusbar
     Plug 'bling/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
-    " Languages
-    Plug 'rust-lang/rust.vim',              { 'for': ['rust'] }
-    Plug 'plasticboy/vim-markdown',         { 'for': ['markdown'] }
-    Plug 'posva/vim-vue',                   { 'for': ['vue'] }
-    Plug 'cakebaker/scss-syntax.vim',       { 'for': ['vue','scss','sass'] }
-    Plug 'yaymukund/vim-rabl',              { 'for': ['rabl'] }
-    Plug 'hail2u/vim-css3-syntax',          { 'for': ['vue','css'] }
-    Plug 'gko/vim-coloresque',              { 'for': ['vue','css','css','sass'] }
-    Plug 'isRuslan/vim-es6',                { 'for': ['javascript'] }
-    Plug 'dmix/elvish.vim',                 { 'for': ['elvish'] }
-    Plug 'dmix/vim-tasks',                  { 'for': ['tasks'] }
-    Plug 'leafgarland/typescript-vim',      { 'for': ['typescript'] }
+    " File browser
+    Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    Plug 'kyazdani42/nvim-tree.lua'
 
-    Plug 'benmills/vimux'
+    " Commenting
+    Plug 'tomtom/tcomment_vim'
+
+    " Vue
+    Plug 'leafOfTree/vim-vue-plugin',      { 'for': ['vue'] }
+
+    " Rust
+    Plug 'preservim/vimux',                 { 'for': ['rust'] }
+    Plug 'rust-lang/rust.vim',              { 'for': ['rust'] }
     Plug 'jtdowney/vimux-cargo',            { 'for': ['rust'] }
 
-    Plug 'majutsushi/tagbar'
+    " Haskell
+    Plug 'junegunn/fzf',                    { 'for': ['haskell'], 'dir': '~/.fzf', 'do': './install --all'}
+    Plug 'monkoose/fzf-hoogle.vim',         { 'for': ['haskell'] }
+
+    " Languages
+    Plug 'plasticboy/vim-markdown',         { 'for': ['markdown'] }
+    Plug 'yaymukund/vim-rabl',              { 'for': ['rabl'] }
+    Plug 'cakebaker/scss-syntax.vim',       { 'for': ['vue', 'scss','sass'] }
+    Plug 'hail2u/vim-css3-syntax',          { 'for': ['vue', 'css'] }
+    Plug 'gko/vim-coloresque'
+    Plug 'isRuslan/vim-es6',                { 'for': ['vue', 'javascript'] }
+    Plug 'Quramy/tsuquyomi',                { 'for': ['typescript', 'vue'], 'do': 'make -f make_mac.mak' }
+    Plug 'HerringtonDarkholme/yats.vim',    { 'for': ['typescript', 'vue'] }
+    " Plug 'fatih/vim-go',                    { 'for': ['go'], 'do': ':GoUpdateBinaries' }
+    " Plug 'dmix/elvish.vim',                 { 'for': ['elvish'] }
+
+    Plug 'dmix/vim-tasks',                  { 'for': ['tasks'] }
     Plug 'mhinz/vim-startify'
     Plug 'powerman/vim-plugin-AnsiEsc'
     Plug 'mtth/scratch.vim'
-    Plug 'godlygeek/tabular'
-    Plug 'vim-scripts/greplace.vim' 
-    Plug 'scrooloose/nerdtree'
-    Plug 'moll/vim-bbye'
+    Plug 'moll/vim-bbye' " Buffer delete
     Plug 'editorconfig/editorconfig-vim'
-    Plug 'neomake/neomake'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'wellle/tmux-complete.vim'
-    Plug 'vimwiki/vimwiki'
-    Plug 'tomtom/tcomment_vim'
     Plug 'kana/vim-operator-user'
     Plug 'rhysd/vim-operator-surround'
     Plug 'tpope/vim-surround'
-    " Purgatory
-    " Plug 'storyn26383/vim-vue',             { 'for': ['vue'] }
+    Plug 'neomake/neomake'
+    Plug 'tracyone/neomake-multiprocess'
 call plug#end()
 
 
 " -----------------------------------------------------------------------------
 " Plugin options
 " -----------------------------------------------------------------------------
+
+" vue
+" -----------------------------------------------------------------------------
+" coffee, haml, handlebars, less, pug, sass, scss, slm, stylus, typescript
+" let g:vue_pre_processors = ['typescript', 'scss']
 
 " Coc
 " -----------------------------------------------------------------------------
@@ -100,10 +104,19 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
+" }\"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
@@ -112,13 +125,18 @@ imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
+" let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_next = '<tab>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Vim operator surround
 " -----------------------------------------------------------------------------
@@ -147,10 +165,10 @@ nnoremap <Leader>bd :Bdelete<CR>
 
 " Task Bindings
 " -----------------------------------------------------------------------------
-let g:TasksMarkerBase = '☐'
-let g:TasksMarkerDone = '✔'
-let g:TasksMarkerCancelled = '✘'
-let g:TasksAttributeMarker = '@'
+" let g:TasksMarkerBase      = '☐'
+" let g:TasksMarkerDone      = '✔'
+" let g:TasksMarkerCancelled = '✘'
+" let g:TasksAttributeMarker = '@'
 
 " Vim Tmux Navigator
 " -----------------------------------------------------------------------------
@@ -171,43 +189,76 @@ map <silent> <C-\> :TmuxNavigatePrevious<cr>
 
 " Vimux
 " -----------------------------------------------------------------------------
-" Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR> 
+" " Prompt for a command to run
+" map <Leader>vp :VimuxPromptCommand<CR>
+"
+" " Run last command executed by VimuxRunCommand
+" map <Leader>vl :VimuxRunLastCommand<CR>
+"
+" function! VimuxSlime()
+" 	call VimuxOpenRunner()
+" 	call VimuxSendText(@v)
+" 	call VimuxSendKeys("Enter")
+" 	echom "Vimux GO"
+" endfunction
+"
+" " If text is selected, save it in the v buffer and send that buffer it to tmux
+" vnoremap <Leader>vv "vy :call VimuxSlime()<CR>
+"
+" " Select current paragraph and send it to tmux
+" " noremap <Leader>vs vip<Leader>vs<CR>
+" nnoremap <Leader>vv v$"vy :call VimuxSlime()<CR>
 
-" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
+" NVIM Tree
+" -----------------------------------------------------------------------------
 
-function! VimuxSlime()
-	call VimuxOpenRunner()
-	call VimuxSendText(@v)
-	call VimuxSendKeys("Enter")
-	echom "Vimux GO"
-endfunction
-
-" If text is selected, save it in the v buffer and send that buffer it to tmux
-vnoremap <Leader>vv "vy :call VimuxSlime()<CR>
-
-" Select current paragraph and send it to tmux
-" noremap <Leader>vs vip<Leader>vs<CR>
-nnoremap <Leader>vv v$"vy :call VimuxSlime()<CR>
-
-" NERDTree
-" ------------------------------------------------------------------------------
-
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeWinPos = "right"
-let g:NERDTreeIgnore = ['\~$', '\.map', '.git$', 'node_modules$', '_build$', 'deps',]
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-map <C-n> :NERDTreeToggle<CR>
+let g:nvim_tree_side = 'right' "left by default
+let g:nvim_tree_width = 30 "30 by default, can be width_in_columns or 'width_in_percent%'
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
+let g:nvim_tree_gitignore = 1 "0 by default
+let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+let g:nvim_tree_hide_dotfiles = 0 "0 by default, this option hides files and folders starting with a dot `.`
+let g:nvim_tree_lsp_diagnostics = 1 "0 by default, will show lsp diagnostics in the signcolumn. See :help nvim_tree_lsp_diagnostics
+let g:nvim_tree_special_files = {} "{ 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
+let g:nvim_tree_icon_padding = ' '
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': ' ',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': " ",
+    \   'arrow_closed': " ",
+    \   'default': " ",
+    \   'open': "+",
+    \   'empty': " ",
+    \   'empty_open': " ",
+    \   'symlink': " ",
+    \   'symlink_open': " ",
+    \   },
+    \   'lsp': {
+    \     'hint': "",
+    \     'info': "",
+    \     'warning': "",
+    \     'error': "",
+    \   }
+    \ }
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+set termguicolors " this variable must be enabled for colors to be applied properly
 
 " Startify
-" 
+"
 " -----------------------------------------------------------------------------
 
 let g:startify_enable_special         = 0
@@ -239,6 +290,8 @@ let g:startify_custom_footer =
 
 " Denite
 " ------------------------------------------------------------------------------
+
+" Define mappings
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>
@@ -254,52 +307,26 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <Space>
   \ denite#do_map('toggle_select').'j'
 endfunction
-" call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-" call denite#custom#var('file_rec/git', 'command',
-    " \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
-" call denite#custom#var('file/rec', 'command',
-" \ ['rg', '--files', '--glob', '!.git'])
-"
-" call denite#custom#var('file/rec', 'command',
-" \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-
+" " Change file/rec command.
+set wildignore+=**/bower_components/**,**/node_modules/**,**vendor/bundle**,**target/scala**,**project/target**,*.jpg,*.gif,*.png,*.svg,*.zip
+call denite#custom#var('grep', {
+    \ 'command': ['rg'],
+    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+    \ 'recursive_opts': [],
+    \ 'pattern_opt': ['--regexp'],
+    \ 'separator': ['--'],
+    \ 'final_opts': [],
+    \ })
 call denite#custom#var('file/rec', 'command',
-    \ ['rg', '--files', '--vimgrep'])
+\ ['rg', '--files', '--glob', '!.git', '--color', 'never'])
 
-" Change mappings.
-call denite#custom#map(
-    \ 'insert',
-    \ '<C-p>',
-    \ '<denite:move_to_previous_line>',
-    \ 'noremap'
-    \)
-call denite#custom#map(
-    \ 'insert',
-    \ '<C-n>',
-    \ '<denite:move_to_next_line>',
-    \ 'noremap'
-    \)
+" Change default action.
+" call denite#custom#kind('file', 'default_action', 'vsplit')
 
-" Ag command on grep source
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-    \ ['-i', '--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-" call denite#custom#var('grep', 'command', ['pt'])
-" call denite#custom#var('grep', 'default_opts',
-"     \ ['--nogroup', '--smart-case', '--nocolor'])
-" call denite#custom#var('grep', 'recursive_opts', [])
-" call denite#custom#var('grep', 'pattern_opt', [])
-" call denite#custom#var('grep', 'separator', ['--'])
-" call denite#custom#var('grep', 'final_opts', [])
-
-" brew install the_silver_searcher
-
+call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+call denite#custom#var('file/rec/git', 'command',
+      \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
 " Strip Whitespace
 " ------------------------------------------------------------------------------
@@ -330,14 +357,14 @@ let g:neomake_text_enabled_makers       = ['proselint']
 let g:neomake_typescript_enabled_makers = ['tslint']
 let g:neomake_yaml_enabled_makers       = ['yamllint']
 let g:neomake_zsh_enabled_makers        = ['zsh']
-
+let g:neomakemp_grep_command = "rg"
 " let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 " gem install haml_lint
 " gem install rubocop
 " npm install -g sass-lint
-" npm install -g stylelint         
+" npm install -g stylelint
 " npm install -g proselint
 " npm install -g jsonlint
 " npm i -g eslint eslint-plugin-vue
@@ -346,107 +373,19 @@ let g:neomake_zsh_enabled_makers        = ['zsh']
 " gem install solargraph -v 0.18.0
 " pip install solargraph-utils.py --user
 
-" Neoformat
-" -----------------------------------------------------------------------------
-" let g:neoformat_elixir_exfmt = {
-"   \ 'exe': 'mix',
-"   \ 'args': ['exfmt', '--stdin'],
-"   \ 'stdin': 1
-"   \ }
-"
-" let g:neoformat_enabled_elixir = ['exfmt']
-
-" Deoplete
-" -----------------------------------------------------------------------------
-" Set bin if you have many instalations
-" let g:deoplete#sources#ternjs#tern_bin = '/usr/local/bin/tern'
-" let g:deoplete#sources#ternjs#timeout = 1
-"
-" " Whether to include the types of the completions in the result data. Default: 0
-" let g:deoplete#sources#ternjs#types = 1
-"
-" " Whether to include the distance (in scopes for variables, in prototypes for 
-" " properties) between the completions and the origin position in the result 
-" " data. Default: 0
-" let g:deoplete#sources#ternjs#depths = 0
-"
-" " Whether to include documentation strings (if found) in the result data.
-" " Default: 0
-" let g:deoplete#sources#ternjs#docs = 0
-"
-" " When on, only completions that match the current word at the given point will
-" " be returned. Turn this off to get all results, so that you can filter on the 
-" " client side. Default: 1
-" let g:deoplete#sources#ternjs#filter = 1
-"
-" " Whether to use a case-insensitive compare between the current word and 
-" " potential completions. Default 0
-" let g:deoplete#sources#ternjs#case_insensitive = 1
-"
-" " When completing a property and no completions are found, Tern will use some 
-" " heuristics to try and return some properties anyway. Set this to 0 to 
-" " turn that off. Default: 1
-" let g:deoplete#sources#ternjs#guess = 0
-"
-" " Determines whether the result set will be sorted. Default: 1
-" let g:deoplete#sources#ternjs#sort = 1
-"
-" " When disabled, only the text before the given position is considered part of 
-" " the word. When enabled (the default), the whole variable name that the cursor
-" " is on will be included. Default: 1
-" let g:deoplete#sources#ternjs#expand_word_forward = 1
-"
-" " Whether to ignore the properties of Object.prototype unless they have been 
-" " spelled out by at least two characters. Default: 1
-" let g:deoplete#sources#ternjs#omit_object_prototype = 0
-"
-" " Whether to include JavaScript keywords when completing something that is not 
-" " a property. Default: 0
-" let g:deoplete#sources#ternjs#include_keywords = 1
-"
-" " If completions should be returned when inside a literal. Default: 1
-" let g:deoplete#sources#ternjs#in_literal = 1
-"
-"
-" "Add extra filetypes
-" let g:deoplete#sources#ternjs#filetypes = [
-"                 \ 'js',
-"                 \ 'jsx',
-"                 \ 'javascript.jsx',
-"                 \ ]
-"                 " \ 'vue',
-
-" Pass a dictionary to set multiple options
-" call deoplete#custom#option({
-" \ 'auto_complete_delay': 50,
-" \ 'smart_case': v:true,
-" \ })
-
-let g:deoplete_import_js#bin = 'yarn run importjs'
-
-autocmd FileType markdown
-       \ call deoplete#custom#buffer_option('auto_complete', v:false)
-
 " Mix Format
 " -----------------------------------------------------------------------------
 let g:mix_format_on_save = 1
 
 " Neosnippet
 " -----------------------------------------------------------------------------
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-" Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
-
-" Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/vim/plugged/vim-snippets/snippets'
 
 if has('conceal')
@@ -477,35 +416,60 @@ autocmd BufRead *.vue,*.js :setlocal tags=./tags;
 " -----------------------------------------------------------------------------
 let g:rustfmt_autosave = 1
 
-" Jellybean theme
-" -----------------------------------------------------------------------------
-let g:jellybeans_use_term_italics = 1
-let g:jellybeans_overrides = {
-\    'background': { 'guibg': '0e0e0e' },
-\    'Comment': { 'guifg': '7d7d7d',
-\                 'guibg': '0e0e0e',
-\                 'ctermfg': 'Black',
-\                 'ctermbg': 'Gray',
-\                 'attr': '' },
-\}
-
-
-" Themes 
+" Themes
 " -----------------------------------------------------------------------------
 
-let g:hybrid_custom_term_colors = 1
+set background=dark
+syntax on
+
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
+
+set numberwidth=5
+let g:onedark_termcolors = 16
 let g:onedark_terminal_italics=0
-let g:onedark_termcolors = 1
-let g:onedark_color_overrides = {
-\ "black": {"gui": "#121419", "cterm": "235", "cterm16": "0" },
-\}
 let g:lightline = {
 \ 'colorscheme': 'onedark',
 \ }
-let g:airline_theme='onedark'
-set background=dark
-syntax on
+let g:onedark_style = 'darker'
 colorscheme onedark
-autocmd ColorScheme * call onedark#set("CursorLine", { "bg": { "gui": "#000000", "cterm": 235, "ctergm16": 0 } })
+
+" Treesitter
+" -----------------------------------------------------------------------------
+
+lua << EOF
+require('onedark').setup()
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+    disable = { "vim" },
+  },
+}
+EOF
+
+" Airline
+" -----------------------------------------------------------------------------
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_theme='onedark'
+let g:airline_section_error = airline#section#create_right(['%{neomakemp#run_status()}'])
+
+" Notes
+" -----------------------------------------------------------------------------
+let g:notes_directories = ['~/notes']
+
+" Coc extensions
+" -----------------------------------------------------------------------------
+
+" :CocInstall coc-tsserver coc-css coc-elixir coc-emmet coc-eslint coc-git  coc-go  coc-html coc-markdown  coc-rls coc-sh  coc-stylelint  coc-vetur coc-yaml coc-xml
+
+
+" Haskell
+" -----------------------------------------------------------------------------
+
+augroup HoogleMaps
+  autocmd!
+  autocmd FileType haskell nnoremap <buffer> <space>hh :Hoogle <C-r><C-w><CR>
+augroup END
+

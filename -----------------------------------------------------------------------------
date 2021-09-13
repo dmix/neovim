@@ -1,4 +1,4 @@
-" -----------------------------------------------------------------------------
+f  -----------------------------------------------------------------------------
 " vim Config
 " -----------------------------------------------------------------------------
 
@@ -132,7 +132,7 @@ augroup END
 
 augroup fixFiletypes
     " Aliasing file types
-    " autocmd BufNewFile,BufRead *.todo set syntax=markdown
+    autocmd BufNewFile,BufRead *.todo set syntax=markdown
     autocmd BufNewFile,BufRead *.alias set syntax=zsh
     autocmd BufNewFile,BufRead *.html.eex set syntax=elixir
     autocmd BufNewFile,BufRead *.html.eex set syntax=eelixir
