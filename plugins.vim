@@ -20,70 +20,82 @@
 " Plugins
 " -----------------------------------------------------------------------------
 call plug#begin("~/vim/plugged")
+" Session Managemernt
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
 
-    " Autocomplete / snippets
-    Plug 'neoclide/coc.nvim', {'branch': 'master'}
-    Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+" Project search and buffer management
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
-    Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
-    Plug 'bronson/vim-trailing-whitespace'
-    " Plug 'Shougo/neosnippet.vim'
-    " Plug 'Shougo/neosnippet-snippets'
+" Autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'master'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 
-    " Colorschemes
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'navarasu/onedark.nvim'
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
 
-    " Statusbar
-    Plug 'bling/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+" Colorschemes
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'dmix/onedark.nvim'
 
-    " File browser
-    Plug 'kyazdani42/nvim-web-devicons' " for file icons
-    Plug 'kyazdani42/nvim-tree.lua'
+" Statusbar
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-    " Commenting
-    Plug 'tomtom/tcomment_vim'
+" File browser
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 
-    " Vue
-    Plug 'leafOfTree/vim-vue-plugin',      { 'for': ['vue'] }
+" Commenting
+Plug 'tomtom/tcomment_vim'
 
-    " Rust
-    Plug 'preservim/vimux',                 { 'for': ['rust'] }
-    Plug 'rust-lang/rust.vim',              { 'for': ['rust'] }
-    Plug 'jtdowney/vimux-cargo',            { 'for': ['rust'] }
+" Vue
+Plug 'leafOfTree/vim-vue-plugin',      { 'for': ['vue'] }
 
-    " Haskell
-    Plug 'junegunn/fzf',                    { 'for': ['haskell'], 'dir': '~/.fzf', 'do': './install --all'}
-    Plug 'monkoose/fzf-hoogle.vim',         { 'for': ['haskell'] }
+" Rust
+Plug 'preservim/vimux',                 { 'for': ['rust'] }
+Plug 'rust-lang/rust.vim',              { 'for': ['rust'] }
+Plug 'jtdowney/vimux-cargo',            { 'for': ['rust'] }
 
-    " Languages
-    Plug 'plasticboy/vim-markdown',         { 'for': ['markdown'] }
-    Plug 'yaymukund/vim-rabl',              { 'for': ['rabl'] }
-    Plug 'cakebaker/scss-syntax.vim',       { 'for': ['vue', 'scss','sass'] }
-    Plug 'hail2u/vim-css3-syntax',          { 'for': ['vue', 'css'] }
-    Plug 'gko/vim-coloresque'
-    Plug 'isRuslan/vim-es6',                { 'for': ['vue', 'javascript'] }
-    Plug 'Quramy/tsuquyomi',                { 'for': ['typescript', 'vue'], 'do': 'make -f make_mac.mak' }
-    Plug 'HerringtonDarkholme/yats.vim',    { 'for': ['typescript', 'vue'] }
-    " Plug 'fatih/vim-go',                    { 'for': ['go'], 'do': ':GoUpdateBinaries' }
-    " Plug 'dmix/elvish.vim',                 { 'for': ['elvish'] }
+" Haskell
+Plug 'junegunn/fzf',                    { 'for': ['haskell'], 'dir': '~/.fzf', 'do': './install --all'}
+Plug 'monkoose/fzf-hoogle.vim',         { 'for': ['haskell'] }
 
-    Plug 'dmix/vim-tasks',                  { 'for': ['tasks'] }
-    Plug 'mhinz/vim-startify'
-    Plug 'powerman/vim-plugin-AnsiEsc'
-    Plug 'mtth/scratch.vim'
-    Plug 'moll/vim-bbye' " Buffer delete
-    Plug 'editorconfig/editorconfig-vim'
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'wellle/tmux-complete.vim'
-    Plug 'kana/vim-operator-user'
-    Plug 'rhysd/vim-operator-surround'
-    Plug 'tpope/vim-surround'
-    Plug 'neomake/neomake'
-    Plug 'tracyone/neomake-multiprocess'
+" Languages
+Plug 'plasticboy/vim-markdown',         { 'for': ['markdown'] }
+Plug 'yaymukund/vim-rabl',              { 'for': ['rabl'] }
+Plug 'cakebaker/scss-syntax.vim',       { 'for': ['vue', 'scss','sass'] }
+Plug 'hail2u/vim-css3-syntax',          { 'for': ['vue', 'css'] }
+Plug 'gko/vim-coloresque'
+Plug 'isRuslan/vim-es6',                { 'for': ['vue', 'javascript'] }
+Plug 'Quramy/tsuquyomi',                { 'for': ['typescript', 'vue'], 'do': 'make -f make_mac.mak' }
+Plug 'HerringtonDarkholme/yats.vim',    { 'for': ['typescript', 'vue'] }
+" Plug 'fatih/vim-go',                    { 'for': ['go'], 'do': ':GoUpdateBinaries' }
+" Plug 'dmix/elvish.vim',                 { 'for': ['elvish'] }
+Plug 'euclidianAce/BetterLua.vim'
+
+Plug 'dmix/vim-tasks',                  { 'for': ['tasks'] }
+Plug 'mhinz/vim-startify'
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'mtth/scratch.vim'
+Plug 'moll/vim-bbye' " Buffer delete
+Plug 'editorconfig/editorconfig-vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'wellle/tmux-complete.vim'
+Plug 'kana/vim-operator-user'
+Plug 'rhysd/vim-operator-surround'
+Plug 'tpope/vim-surround'
+Plug 'neomake/neomake'
+Plug 'tracyone/neomake-multiprocess'
+
+" Strip Whitespace
+Plug 'bronson/vim-trailing-whitespace'
+
+" Hop (easymotion remake) tag positions and jump between them
+Plug 'phaazon/hop.nvim'
 call plug#end()
 
 
@@ -91,10 +103,12 @@ call plug#end()
 " Plugin options
 " -----------------------------------------------------------------------------
 
-" vue
+" Hop
 " -----------------------------------------------------------------------------
-" coffee, haml, handlebars, less, pug, sass, scss, slm, stylus, typescript
-" let g:vue_pre_processors = ['typescript', 'scss']
+
+lua << EOF
+require'hop'.setup()
+EOF
 
 " Coc
 " -----------------------------------------------------------------------------
@@ -110,29 +124,17 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
-" }\"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
 
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-" let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_next = '<tab>'
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -140,6 +142,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Vim operator surround
 " -----------------------------------------------------------------------------
+
 map <silent>sa <Plug>(operator-surround-append)
 map <silent>sd <Plug>(operator-surround-delete)
 map <silent>sr <Plug>(operator-surround-replace)
@@ -427,7 +430,9 @@ set termguicolors
 
 set numberwidth=5
 let g:onedark_termcolors = 16
-let g:onedark_terminal_italics=0
+let g:onedark_italic_comment = 1
+let g:onedark_terminal_italics=1
+let g:onedark_transparent_background = 1
 let g:lightline = {
 \ 'colorscheme': 'onedark',
 \ }
@@ -438,7 +443,7 @@ colorscheme onedark
 " -----------------------------------------------------------------------------
 
 lua << EOF
-require('onedark').setup()
+-- require('onedark').setup()
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
   highlight = {

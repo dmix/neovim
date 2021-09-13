@@ -112,3 +112,13 @@ imap <c-v> <esc>"+pa
 
 nnoremap alnc <Esc> :Tab /,\zs<CR>
 nnoremap alns <Esc> :Tab /:\zs<CR>
+
+" Hop https://github.com/phaazon/hop.nvim#usage
+" -----------------------------------------------------------------------------
+"     :HopWord: hop around by highlighting words.
+"     :HopPattern: hop around by matching against a pattern (as with /).
+"     :HopChar1: type a single key and hop to any occurrence of that key in the document.
+"     :HopChar2: type a bigram (two keys) and hop to any occurrence of that bigram in the document.
+"     :HopLine: jump to any visible line in your buffer.
+noremap <silent> <Leader>h :HopWord<CR>
+noremap <silent> <Leader>s :HopPattern<CR>
