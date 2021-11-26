@@ -73,6 +73,9 @@ set undodir=$HOME/.cache/vim/undofile
 set backupdir=$HOME/.cache/vim/backup
 set directory=$HOME/.cache/vim/swap
 
+set nobackup
+set noswapfile
+
 set nowritebackup
 set matchtime=0
 set ruler
@@ -143,11 +146,11 @@ augroup END
 augroup customFormatting
     " Strip line endings for certain filetypes
     autocmd FileType c,cpp,java,php,ruby,json,yaml,toml,javascript,html,css,scss,elixir,markdown,jinja,jinja.html autocmd BufWritePre <buffer> %s/\s\+$//e
+    autocmd FileType javascript autocmd BufWritePre <buffer> :Neomake
+    autocmd FileType typescript autocmd BufWritePre <buffer> :Neomake
     autocmd FileType rust autocmd BufWritePre <buffer> :Neomake
     autocmd FileType vue autocmd BufWritePre <buffer> :Neomake
     autocmd FileType vue autocmd BufWritePre <buffer> :call PreciseTrimWhiteSpace()
-    autocmd FileType javascript autocmd BufWritePre <buffer> :Neomake
-    autocmd FileType typescript autocmd BufWritePre <buffer> :Neomake
     autocmd FileType vue syntax sync fromstart
     autocmd FileType javascript,go,eelixir,make,erlang,html,eruby,vue,scss,sass,css call g:CustomFormatting()
     autocmd FileType elixir call deoplete#custom#source('alchemist', 'rank', 500)
@@ -155,7 +158,7 @@ augroup END
 
 augroup tabbing
     " Custom formatting
-    autocmd FileType yaml,go,eelixir,vim,zsh,rust,javascript,vue,html,eelixir,typescript,json set tabstop=4 shiftwidth=4 expandtab
+    autocmd FileType yaml,haskell,go,eelixir,vim,zsh,rust,javascript,vue,html,eelixir,typescript,json set tabstop=4 shiftwidth=4 expandtab
     autocmd FileType make,erlang setlocal noexpandtab
     autocmd FileType eruby,sass,scss,css set shiftwidth=2 expandtab
 augroup END

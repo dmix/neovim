@@ -20,16 +20,13 @@
 " Plugins
 " -----------------------------------------------------------------------------
 call plug#begin("~/vim/plugged")
-" Session Managemernt
-Plug 'tpope/vim-obsession'
-Plug 'dhruvasagar/vim-prosession'
-
 " Project search and buffer management
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'yaegassy/coc-volar', {'do': 'yarn install --frozen-lockfile'}
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -38,7 +35,7 @@ Plug 'honza/vim-snippets'
 " Plug 'Shougo/neosnippet-snippets'
 
 " Colorschemes
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate', 'tag': '1.4.17' }
 Plug 'dmix/onedark.nvim'
 
 " Statusbar
@@ -75,7 +72,9 @@ Plug 'Quramy/tsuquyomi',                { 'for': ['typescript', 'vue'], 'do': 'm
 Plug 'HerringtonDarkholme/yats.vim',    { 'for': ['typescript', 'vue'] }
 " Plug 'fatih/vim-go',                    { 'for': ['go'], 'do': ':GoUpdateBinaries' }
 " Plug 'dmix/elvish.vim',                 { 'for': ['elvish'] }
-Plug 'euclidianAce/BetterLua.vim'
+Plug 'tpope/vim-rails',                 { 'for': ['ruby'] }
+Plug 'euclidianAce/BetterLua.vim',      { 'for': ['lua', 'viml', 'vim'] }
+Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'dmix/vim-tasks',                  { 'for': ['tasks'] }
 Plug 'mhinz/vim-startify'
@@ -110,42 +109,6 @@ lua << EOF
 require'hop'.setup()
 EOF
 
-" Coc
-" -----------------------------------------------------------------------------
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<c-k>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Vim operator surround
-" -----------------------------------------------------------------------------
-
-map <silent>sa <Plug>(operator-surround-append)
-map <silent>sd <Plug>(operator-surround-delete)
-map <silent>sr <Plug>(operator-surround-replace)
 
 " Deoplete
 " -----------------------------------------------------------------------------
@@ -215,7 +178,7 @@ map <silent> <C-\> :TmuxNavigatePrevious<cr>
 " NVIM Tree
 " -----------------------------------------------------------------------------
 
-let g:nvim_tree_side = 'right' "left by default
+let g:nvim_tree_side = 'left' "left by default
 let g:nvim_tree_width = 30 "30 by default, can be width_in_columns or 'width_in_percent%'
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
 let g:nvim_tree_gitignore = 1 "0 by default
@@ -347,6 +310,7 @@ let g:neomake_css_enabled_makers        = ['stylelint']
 " let g:neomake_markdown_enabled_makers   = ['proselint']
 let g:neomake_haml_enabled_makers       = ['haml-lint']
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_typescript_enabled_makers = ['eslint']
 let g:neomake_vue_enabled_makers        = ['eslint']
 let g:neomake_ruby_enabled_makers       = ['rubocop']
 let g:neomake_haskell_enabled_makers    = ['hlint']
@@ -467,9 +431,46 @@ let g:notes_directories = ['~/notes']
 " Coc extensions
 " -----------------------------------------------------------------------------
 
-" :CocInstall coc-tsserver coc-css coc-elixir coc-emmet coc-eslint coc-git  coc-go  coc-html coc-markdown  coc-rls coc-sh  coc-stylelint  coc-vetur coc-yaml coc-xml
+" :CocInstall coc-tsserver coc-css coc-elixir coc-emmet coc-eslint coc-git  coc-go  coc-html coc-markdown  coc-rls coc-sh  coc-stylelint  coc-yaml coc-xml coc-vetur
+" @yaegassy/coc-volar
 
+" Coc
+" -----------------------------------------------------------------------------
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<c-k>'
+let g:coc_global_extensions = ['coc-solargraph']
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Vim operator surround
+" -----------------------------------------------------------------------------
+
+map <silent>sa <Plug>(operator-surround-append)
+map <silent>sd <Plug>(operator-surround-delete)
+map <silent>sr <Plug>(operator-surround-replace)
 " Haskell
 " -----------------------------------------------------------------------------
 
