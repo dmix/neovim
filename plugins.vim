@@ -35,16 +35,13 @@ Plug 'honza/vim-snippets'
 " Plug 'Shougo/neosnippet-snippets'
 
 " Colorschemes
-Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate', 'tag': '1.4.17' }
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'dmix/onedark.nvim'
+Plug 'kiurchv/asdf.plugin.zsh'
 
 " Statusbar
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" File browser
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
 
 " Commenting
 Plug 'tomtom/tcomment_vim'
@@ -93,6 +90,21 @@ Plug 'tracyone/neomake-multiprocess'
 " Strip Whitespace
 Plug 'bronson/vim-trailing-whitespace'
 
+" File browser
+" Plug 'kyazdani42/nvim-web-devicons' " for file icons
+" Plug 'kyazdani42/nvim-tree.lua'
+
+" Fern.vim
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+
+" Better ls
+" plug "supercrabtree/k"
+
+" Hop (easymotion remake) tag positions and jump between them
+" sd
 " Hop (easymotion remake) tag positions and jump between them
 Plug 'phaazon/hop.nvim'
 call plug#end()
@@ -178,50 +190,54 @@ map <silent> <C-\> :TmuxNavigatePrevious<cr>
 " NVIM Tree
 " -----------------------------------------------------------------------------
 
-let g:nvim_tree_side = 'left' "left by default
-let g:nvim_tree_width = 30 "30 by default, can be width_in_columns or 'width_in_percent%'
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
-let g:nvim_tree_gitignore = 1 "0 by default
-let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
-let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
-let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
-let g:nvim_tree_hide_dotfiles = 0 "0 by default, this option hides files and folders starting with a dot `.`
-let g:nvim_tree_lsp_diagnostics = 1 "0 by default, will show lsp diagnostics in the signcolumn. See :help nvim_tree_lsp_diagnostics
-let g:nvim_tree_special_files = {} "{ 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
-let g:nvim_tree_icon_padding = ' '
-let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': ' ',
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': " ",
-    \   'arrow_closed': " ",
-    \   'default': " ",
-    \   'open': "+",
-    \   'empty': " ",
-    \   'empty_open': " ",
-    \   'symlink': " ",
-    \   'symlink_open': " ",
-    \   },
-    \   'lsp': {
-    \     'hint': "",
-    \     'info': "",
-    \     'warning': "",
-    \     'error': "",
-    \   }
-    \ }
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-set termguicolors " this variable must be enabled for colors to be applied properly
+" let g:nvim_tree_side = 'left' "left by default
+" let g:nvim_tree_width = 30 "30 by default, can be width_in_columns or 'width_in_percent%'
+" let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
+" let g:nvim_tree_gitignore = 1 "0 by default
+" let g:nvim_tree_auto_open = 1 "0 by default, opens the tree when typing `vim $DIR` or `vim`
+" let g:nvim_tree_auto_close = 1 "0 by default, closes the tree when it's the last window
+" let g:nvim_tree_follow = 1 "0 by default, this option allows the cursor to be updated when entering a buffer
+" let g:nvim_tree_hide_dotfiles = 0 "0 by default, this option hides files and folders starting with a dot `.`
+" let g:nvim_tree_lsp_diagnostics = 1 "0 by default, will show lsp diagnostics in the signcolumn. See :help nvim_tree_lsp_diagnostics
+" let g:nvim_tree_special_files = {} "{ 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
+" let g:nvim_tree_icon_padding = ' '
+" let g:nvim_tree_icons = {
+"     \ 'default': '',
+"     \ 'symlink': ' ',
+"     \ 'git': {
+"     \   'unstaged': "✗",
+"     \   'staged': "✓",
+"     \   'unmerged': "",
+"     \   'renamed': "➜",
+"     \   'untracked': "★",
+"     \   'deleted': "",
+"     \   'ignored': "◌"
+"     \   },
+"     \ 'folder': {
+"     \   'arrow_open': " ",
+"     \   'arrow_closed': " ",
+"     \   'default': " ",
+"     \   'open': "+",
+"     \   'empty': " ",
+"     \   'empty_open': " ",
+"     \   'symlink': " ",
+"     \   'symlink_open': " ",
+"     \   },
+"     \   'lsp': {
+"     \     'hint': "",
+"     \     'info': "",
+"     \     'warning': "",
+"     \     'error': "",
+"     \   }
+"     \ }
+" nnoremap <C-n> :NvimTreeToggle<CR>
+" nnoremap <leader>r :NvimTreeRefresh<CR>
+" nnoremap <leader>n :NvimTreeFindFile<CR>
+" set termguicolors " this variable must be enabled for colors to be applied properly
+
+" Fern.vim
+let g:fern#renderer = "nerdfont"
+nnoremap <C-n> :Fern . -drawer<CR>
 
 " Startify
 "
@@ -412,7 +428,11 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
   highlight = {
     enable = true,
-    disable = { "vim" },
+  },
+  incremental_selection = { enable = true },
+  textobjects = { enable = true },
+  indent = {
+      enable = true
   },
 }
 EOF

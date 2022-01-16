@@ -117,9 +117,10 @@ set nowrap
 " pyenv activate neovim3
 " pip install neovim
 " pyenv which python  # Note the path
-
-let g:python_host_prog = '/Users/dmix/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/dmix/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python'
+" let g:python_host_prog = '/Users/dmix/.pyenv/versions/neovim2/bin/python'
+" let g:python3_host_prog = '/Users/dmix/.pyenv/versions/neovim3/bin/python'
 
 " let $NVIM_PYTHON_LOG_FILE="~/tmp/nvim.log"
 " let $NVIM_PYTHON_LOG_LEVEL="DEBUG"
