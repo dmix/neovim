@@ -20,8 +20,10 @@ if has('python3')
             \ '<denite:enter_mode:normal>',
             \ 'noremap'
             \)
+    nnoremap <C-P> :DeniteProjectDir -buffer-name=git -direction=top file_rec/git<CR>
+    nnoremap <C-O> :DeniteProjectDir -buffer-name=files -direction=top file_rec<CR>
     nnoremap <silent> <Leader>p :DeniteProjectDir file/rec<CR>
-    nnoremap <silent> <Leader>b :Denite buffer<CR>
+    "nnoremap <silent> <Leader>b :Denite buffer<CR>i<CR>
     nmap <Leader>bb :Denite buffer<CR>
     nnoremap <silent> <Leader>l :Denite buffer<CR>
     nnoremap <silent> <Leader>j :bn<CR><esc>
@@ -48,12 +50,17 @@ endif
 " Config shortcut
 " -----------------------------------------------------------------------------
 
-nnoremap vrc <Esc> :e ~/vim/init.vim <CR>
-nnoremap vrp <Esc> :e ~/vim/plugins.vim <CR>
-nnoremap vrk <Esc> :e ~/vim/keybindings.vim <CR>
+nnoremap vrc <Esc> :e ~/neovim/init.vim <CR>
+nnoremap vrp <Esc> :e ~/neovim/plugins.vim <CR>
+nnoremap vrk <Esc> :e ~/neovim/keybindings.vim <CR>
 nnoremap zrc <Esc> :e ~/zsh/src/init.zsh <CR>
-nnoremap arc <Esc> :e ~/zsh/plugins/zsh-aliases <CR>
+nnoremap zal <Esc> :e ~/zsh/plugins/zsh-aliases <CR>
 nnoremap zconf <Esc> :e ~/zsh/src/config.zsh <CR>
+nnoremap masdf <Esc> :e ~/macos/bin/asdf.zsh <CR>
+nnoremap mnvim <Esc> :e ~/macos/bin/install-nvim.zsh <CR>
+nnoremap mboot <Esc> :e ~/macos/bin/macos-bootstrap.zsh <CR>
+nnoremap mprog <Esc> :e ~/macos/bin/macos-programming.zsh <CR>
+nnoremap macos <Esc> :e ~/macos/bin/macos.zsh <CR>
 
 " Keybindings
 " -----------------------------------------------------------------------------
@@ -129,3 +136,7 @@ noremap <silent> <Leader>s :HopPattern<CR>
 nmap <silent> <leader>a <Plug>(coc-codeaction-cursor)
 nmap <silent> ga <Plug>(coc-codeaction-line)
 nmap <silent> gA <Plug>(coc-codeaction)
+
+" ALE
+" -----------------------------------------------------------------------------
+nmap <silent> <Leader>] <Esc> :ALEGoToDefinition<CR>

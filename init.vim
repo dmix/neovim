@@ -19,7 +19,7 @@ set fillchars=vert:│,fold:·
 " Having longer updatetime (default is 4000 ms = 4 s) leads to delays
 set updatetime=300
 
-set laststatus=2
+set laststatus=0 # hide statusline
 set cursorline
 " hide cmd
 set noshowcmd
@@ -100,6 +100,10 @@ set ttimeoutlen=50
 set shortmess+=A
 set nowrap
 
+" Use experimental filetype.lua
+let g:do_filetype_lua = 1
+let g:did_load_filetypes = 0
+
 " Python
 " -----------------------------------------------------------------------------
 
@@ -117,8 +121,8 @@ set nowrap
 " pyenv activate neovim3
 " pip install neovim
 " pyenv which python  # Note the path
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python'
+let g:python_host_prog = '/opt/homebrew/opt/python@3.9/libexec/bin/python'
+let g:python3_host_prog = '/opt/homebrew/opt/python@3.9/libexec/bin/python'
 " let g:python_host_prog = '/Users/dmix/.pyenv/versions/neovim2/bin/python'
 " let g:python3_host_prog = '/Users/dmix/.pyenv/versions/neovim3/bin/python'
 
@@ -147,10 +151,10 @@ augroup END
 augroup customFormatting
     " Strip line endings for certain filetypes
     autocmd FileType c,cpp,java,php,ruby,json,yaml,toml,javascript,html,css,scss,elixir,markdown,jinja,jinja.html autocmd BufWritePre <buffer> %s/\s\+$//e
-    autocmd FileType javascript autocmd BufWritePre <buffer> :Neomake
-    autocmd FileType typescript autocmd BufWritePre <buffer> :Neomake
-    autocmd FileType rust autocmd BufWritePre <buffer> :Neomake
-    autocmd FileType vue autocmd BufWritePre <buffer> :Neomake
+    " autocmd FileType javascript autocmd BufWritePre <buffer> :Neomake
+    " autocmd FileType typescript autocmd BufWritePre <buffer> :Neomake
+    " autocmd FileType rust autocmd BufWritePre <buffer> :Neomake
+    " autocmd FileType vue autocmd BufWritePre <buffer> :Neomake
     autocmd FileType vue autocmd BufWritePre <buffer> :call PreciseTrimWhiteSpace()
     autocmd FileType vue syntax sync fromstart
     autocmd FileType javascript,go,eelixir,make,erlang,html,eruby,vue,scss,sass,css call g:CustomFormatting()
