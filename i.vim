@@ -2,45 +2,45 @@
 " vim Config
 " -----------------------------------------------------------------------------
 
+
 " Settings
-" -----------------------------------------------------------------------------
-let mapleader=" "
+let mapleader=' '
 set nowrap
 set clipboard=unnamedplus
 set nospell
-set nocompatible
+"set nocompatible
+"o.nocompatible
 filetype off
-
 set backspace=indent,eol,start
 set nrformats-=octal
 set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
 set fillchars=vert:│,fold:·
+o.fillchars=vert:│,fold:·
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to delays
 set updatetime=300
-
-set laststatus=0 # hide statusline
+o.updatetime=300
+set laststatus=0 " hide statusline
 set cursorline
-" hide cmd
+o.cursorline
 set noshowcmd
+o.noshowcmd
 
-" indent
 set autoindent
 set smartindent
 set cindent
+o.cindent
 
-" show wildmenu
 set wildmenu
+o.wildmenu
 
-" do not break words.
 set linebreak
+o.linebreak
 
-" Enable line number
 set number
+o.number
 
-" Automatically read a file changed outside of vim
 set autoread
-
+o.autoread
 set backup
 set undofile
 set undolevels=1000
@@ -49,6 +49,7 @@ let g:backup_dir = g:data_dir . 'backup'
 let g:swap_dir = g:data_dir . 'swap'
 let g:undo_dir = g:data_dir . 'undofile'
 let g:conf_dir = g:data_dir . 'conf'
+g.conf_dir = g:data_dir . 'conf'
 if finddir(g:data_dir) ==# ''
 silent call mkdir(g:data_dir, 'p', 0700)
 endif
@@ -63,7 +64,6 @@ silent call mkdir(g:undo_dir, 'p', 0700)
 endif
 if finddir(g:conf_dir) ==# ''
 silent call mkdir(g:conf_dir, 'p', 0700)
-endif
 unlet g:data_dir
 unlet g:backup_dir
 unlet g:swap_dir
@@ -72,20 +72,20 @@ unlet g:conf_dir
 set undodir=$HOME/.cache/vim/undofile
 set backupdir=$HOME/.cache/vim/backup
 set directory=$HOME/.cache/vim/swap
-
+o.directory=$HOME/.cache/vim/swap
 set nobackup
 set noswapfile
-
+o.noswapfile
 set nowritebackup
 set matchtime=0
 set ruler
 set showmatch
 set showmode
+o.showmode
 "menuone: show the pupmenu when only one match
-" disable preview scratch window,
 set completeopt=menu,menuone,longest
 set complete=.,w,b,u,t
-" limit completion menu height
+o.complete=.,w,b,u,t
 set pumheight=15
 set scrolloff=1
 set sidescrolloff=5
@@ -99,10 +99,11 @@ set ttimeout
 set ttimeoutlen=50
 set shortmess+=A
 set nowrap
+o.nowrap
 
-" Use experimental filetype.lua
 let g:do_filetype_lua = 1
 let g:did_load_filetypes = 0
+g.did_load_filetypes = 0
 
 " Python
 " -----------------------------------------------------------------------------
@@ -120,14 +121,14 @@ let g:did_load_filetypes = 0
 "
 " pyenv activate neovim3
 " pip install neovim
-" pyenv which python  # Note the path
 let g:python_host_prog = '/opt/homebrew/opt/python@3.9/libexec/bin/python'
 let g:python3_host_prog = '/opt/homebrew/opt/python@3.9/libexec/bin/python'
 " let g:python_host_prog = '/Users/dmix/.pyenv/versions/neovim2/bin/python'
 " let g:python3_host_prog = '/Users/dmix/.pyenv/versions/neovim3/bin/python'
-
+" g.python3_host_prog = '/Users/dmix/.pyenv/versions/neovim3/bin/python'
 " let $NVIM_PYTHON_LOG_FILE="~/tmp/nvim.log"
 " let $NVIM_PYTHON_LOG_LEVEL="DEBUG"
+" g.$NVIM_PYTHON_LOG_LEVEL="DEBUG"
 
 " Autocmds
 " -----------------------------------------------------------------------------
@@ -139,13 +140,13 @@ augroup reloadVimrc
 augroup END
 
 augroup fixFiletypes
-    " Aliasing file types
     " autocmd BufNewFile,BufRead *.todo set syntax=markdown
     autocmd BufNewFile,BufRead *.alias set syntax=zsh
     autocmd BufNewFile,BufRead *.html.eex set syntax=elixir
     autocmd BufNewFile,BufRead *.html.eex set syntax=eelixir
     autocmd BufNewFile,BufRead *.md set wrap ft=tasks
     " autocmd BufNewFile,BufRead *.md set spell
+    " autocmd BufNewFile,BufRead *.md o.spell
 augroup END
 
 augroup customFormatting
@@ -162,10 +163,10 @@ augroup customFormatting
 augroup END
 
 augroup tabbing
-    " Custom formatting
     autocmd FileType yaml,haskell,go,eelixir,vim,zsh,rust,javascript,vue,html,eelixir,typescript,json set tabstop=4 shiftwidth=4 expandtab
-    autocmd FileType make,erlang setlocal noexpandtab
-    autocmd FileType eruby,sass,scss,css set shiftwidth=2 expandtab
+    autocmd FileType yaml,haskell,go,eelixir,vim,zsh,rust,javascript,vue,html,eelixir,typescript,json o.tabstop=4 shiftwidth=4 expandtab
+    autocmd FileType lua,eruby,sass,scss,css set shiftwidth=2 expandtab
+    autocmd FileType lua,eruby,sass,scss,css o.shiftwidth=2 expandtab
 augroup END
 
 autocmd FileType go autocmd BufWritePre <buffer> GoFmt
@@ -174,8 +175,8 @@ autocmd FileType * autocmd BufWritePre <buffer> :FixWhitespace
 " Delayed commands
 " ------------------------------------------
 
-function! g:Delayed(cmd)
     let timer = timer_start(500, {-> execute(a:cmd, "")})
+    g.timer = timer_start(500, {-> execute(a:cmd, "")})
 endfunction
 " call Delayed("call DeopleteSettings()")
 

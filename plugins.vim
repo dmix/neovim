@@ -24,6 +24,9 @@ call plug#begin('~/vim/plugged')
 " Project search and buffer management
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
+" Git
+Plug 'tanvirtin/vgit.nvim'
+
 " Chrome integration
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
@@ -60,7 +63,9 @@ Plug 'Shougo/neosnippet-snippets'
 " Colorschemes
 " Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'dmix/onedark.nvim'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'kiurchv/asdf.plugin.zsh'
+Plug 'morhetz/gruvbox'
 
 " Statusbar
 " Plug 'bling/vim-airline'
@@ -144,8 +149,12 @@ call plug#end()
 " Plugin options
 " -----------------------------------------------------------------------------
 
+" firenviom
+" -----------------------------------------------------------------------------
+
 " Vimspect
 " -----------------------------------------------------------------------------
+
 let g:vimspector_enable_mappings = 'HUMAN'
 
 " Tabularize
@@ -284,7 +293,7 @@ lua << EOF
 
   -- Use a loop to conveniently call 'setup' on multiple servers and
   -- map buffer local keybindings when the language server attaches
-  local servers = { 'solargraph', 'eslint', 'rubocop', 'tsserver', 'volar' }
+  local servers = { 'solargraph', 'eslint', 'tsserver', 'volar' } -- 'rubocop',
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
@@ -526,7 +535,6 @@ let g:lightline = {
 \ 'colorscheme': 'onedark',
 \ }
 let g:onedark_style = 'darker'
-colorscheme onedark
 
 " Treesitter
 " -----------------------------------------------------------------------------
@@ -617,3 +625,21 @@ augroup END
 " let g:TasksMarkerDone      = '✔'
 " let g:TasksMarkerCancelled = '✘'
 " let g:TasksAttributeMarker = '@'
+
+if exists('g:started_by_firenvim')
+    colorscheme onehalflight
+    lua << EOF
+
+      -- Setup nvim-cmp.
+      local cmp = require'cmp'
+
+      cmp.enabled = false
+      cmp.setup({
+          enabled = false
+      })
+    EOF
+
+    set guifont=Monaco:h20
+
+    let g:airline_theme='onehalfdark'
+end

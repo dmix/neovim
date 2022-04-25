@@ -53,6 +53,7 @@ endif
 nnoremap vrc <Esc> :e ~/neovim/init.vim <CR>
 nnoremap vrp <Esc> :e ~/neovim/plugins.vim <CR>
 nnoremap vrk <Esc> :e ~/neovim/keybindings.vim <CR>
+nnoremap vrl <Esc> :e ~/neovim/learn.md<CR>
 nnoremap zrc <Esc> :e ~/zsh/src/init.zsh <CR>
 nnoremap zal <Esc> :e ~/zsh/plugins/zsh-aliases <CR>
 nnoremap zconf <Esc> :e ~/zsh/src/config.zsh <CR>
