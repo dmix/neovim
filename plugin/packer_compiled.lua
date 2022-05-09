@@ -180,10 +180,8 @@ _G.packer_plugins = {
     url = "https://github.com/lambdalisue/nerdfont.vim"
   },
   ["nlua.nvim"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/nlua.nvim",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/nlua.nvim",
     url = "https://github.com/tjdevries/nlua.nvim"
   },
   ["nvim-cmp"] = {
@@ -198,6 +196,7 @@ _G.packer_plugins = {
   },
   ["nvim-treesitter"] = {
     commands = { ":TSUpdate" },
+    config = { "\27LJ\2\nà\1\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\vindent\1\0\1\venable\2\16textobjects\1\0\1\venable\2\26incremental_selection\1\0\1\venable\2\14highlight\1\0\1\venable\2\1\0\1\21ensure_installed\ball\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -220,17 +219,13 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["rust.vim"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/rust.vim",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/rust.vim",
     url = "https://github.com/rust-lang/rust.vim"
   },
   ["scss-syntax.vim"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/scss-syntax.vim",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/scss-syntax.vim",
     url = "https://github.com/cakebaker/scss-syntax.vim"
   },
   tcomment_vim = {
@@ -249,10 +244,8 @@ _G.packer_plugins = {
     url = "https://github.com/wellle/tmux-complete.vim"
   },
   tsuquyomi = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/tsuquyomi",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/tsuquyomi",
     url = "https://github.com/Quramy/tsuquyomi"
   },
   ultisnips = {
@@ -271,10 +264,8 @@ _G.packer_plugins = {
     url = "https://github.com/moll/vim-bbye"
   },
   ["vim-bundler"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-bundler",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vim-bundler",
     url = "https://github.com/tpope/vim-bundler"
   },
   ["vim-coloresque"] = {
@@ -283,53 +274,38 @@ _G.packer_plugins = {
     url = "https://github.com/gko/vim-coloresque"
   },
   ["vim-css3-syntax"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-css3-syntax",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vim-css3-syntax",
     url = "https://github.com/hail2u/vim-css3-syntax"
   },
   ["vim-es6"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-es6",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vim-es6",
     url = "https://github.com/isRuslan/vim-es6"
   },
   ["vim-markdown"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-markdown",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vim-markdown",
     url = "https://github.com/plasticboy/vim-markdown"
   },
   ["vim-rabl"] = {
-    after_files = { "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-rabl/after/plugin/rabl.vim" },
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-rabl",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vim-rabl",
     url = "https://github.com/yaymukund/vim-rabl"
   },
   ["vim-rails"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-rails",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vim-rails",
     url = "https://github.com/tpope/vim-rails"
   },
   ["vim-rbenv"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-rbenv",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vim-rbenv",
     url = "https://github.com/tpope/vim-rbenv"
   },
   ["vim-ruby"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-ruby",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vim-ruby",
     url = "https://github.com/vim-ruby/vim-ruby"
   },
   ["vim-snippets"] = {
@@ -373,10 +349,8 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/vim-vsnip-integ"
   },
   ["vim-vue-plugin"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-vue-plugin",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vim-vue-plugin",
     url = "https://github.com/leafOfTree/vim-vue-plugin"
   },
   vimpeccable = {
@@ -390,24 +364,18 @@ _G.packer_plugins = {
     url = "https://github.com/puremourning/vimspector"
   },
   vimux = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vimux",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vimux",
     url = "https://github.com/preservim/vimux"
   },
   ["vimux-cargo"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/vimux-cargo",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/vimux-cargo",
     url = "https://github.com/jtdowney/vimux-cargo"
   },
   ["yats.vim"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/Users/dmix/.local/share/nvim/site/pack/packer/opt/yats.vim",
+    loaded = true,
+    path = "/Users/dmix/.local/share/nvim/site/pack/packer/start/yats.vim",
     url = "https://github.com/HerringtonDarkholme/yats.vim"
   }
 }
@@ -419,60 +387,6 @@ time([[Defining lazy-load commands]], true)
 pcall(vim.cmd, [[au CmdUndefined :TSUpdate ++once lua require"packer.load"({'nvim-treesitter'}, {}, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Filetype lazy-loads
-time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType css ++once lua require("packer.load")({'vim-css3-syntax'}, { ft = "css" }, _G.packer_plugins)]]
-vim.cmd [[au FileType rust ++once lua require("packer.load")({'rust.vim', 'vimux-cargo', 'vimux'}, { ft = "rust" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescript ++once lua require("packer.load")({'tsuquyomi', 'yats.vim'}, { ft = "typescript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType vue ++once lua require("packer.load")({'vim-es6', 'tsuquyomi', 'scss-syntax.vim', 'vim-vue-plugin', 'yats.vim', 'vim-css3-syntax'}, { ft = "vue" }, _G.packer_plugins)]]
-vim.cmd [[au FileType scss ++once lua require("packer.load")({'scss-syntax.vim'}, { ft = "scss" }, _G.packer_plugins)]]
-vim.cmd [[au FileType lua ++once lua require("packer.load")({'nlua.nvim'}, { ft = "lua" }, _G.packer_plugins)]]
-vim.cmd [[au FileType ruby ++once lua require("packer.load")({'vim-ruby', 'vim-rails', 'vim-bundler', 'vim-rbenv'}, { ft = "ruby" }, _G.packer_plugins)]]
-vim.cmd [[au FileType erb ++once lua require("packer.load")({'vim-ruby', 'vim-rails', 'vim-bundler', 'vim-rbenv'}, { ft = "erb" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascript ++once lua require("packer.load")({'vim-es6'}, { ft = "javascript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-markdown'}, { ft = "markdown" }, _G.packer_plugins)]]
-vim.cmd [[au FileType sass ++once lua require("packer.load")({'scss-syntax.vim'}, { ft = "sass" }, _G.packer_plugins)]]
-vim.cmd [[au FileType vim ++once lua require("packer.load")({'nlua.nvim'}, { ft = "vim" }, _G.packer_plugins)]]
-vim.cmd [[au FileType rabl ++once lua require("packer.load")({'vim-rabl'}, { ft = "rabl" }, _G.packer_plugins)]]
-time([[Defining lazy-load filetype autocommands]], false)
-vim.cmd("augroup END")
-vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-markdown/ftdetect/markdown.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-markdown/ftdetect/markdown.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-markdown/ftdetect/markdown.vim]], false)
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-rabl/ftdetect/rabl.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-rabl/ftdetect/rabl.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-rabl/ftdetect/rabl.vim]], false)
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-es6/ftdetect/es6.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-es6/ftdetect/es6.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-es6/ftdetect/es6.vim]], false)
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/tsuquyomi/ftdetect/typescript.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/tsuquyomi/ftdetect/typescript.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/tsuquyomi/ftdetect/typescript.vim]], false)
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/rust.vim/ftdetect/rust.vim]], false)
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/scss-syntax.vim/ftdetect/scss.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/scss-syntax.vim/ftdetect/scss.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/scss-syntax.vim/ftdetect/scss.vim]], false)
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-ruby/ftdetect/ruby.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-ruby/ftdetect/ruby.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-ruby/ftdetect/ruby.vim]], false)
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-ruby/ftdetect/ruby_extra.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-ruby/ftdetect/ruby_extra.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-ruby/ftdetect/ruby_extra.vim]], false)
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-vue-plugin/ftdetect/vue.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-vue-plugin/ftdetect/vue.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/vim-vue-plugin/ftdetect/vue.vim]], false)
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescript.vim]], false)
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]], true)
-vim.cmd [[source /Users/dmix/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]]
-time([[Sourcing ftdetect script at: /Users/dmix/.local/share/nvim/site/pack/packer/opt/yats.vim/ftdetect/typescriptreact.vim]], false)
-vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)

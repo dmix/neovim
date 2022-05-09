@@ -15,120 +15,107 @@
 --
 -----------------------------------------------------------------------------
 
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
-
-  -- Lua/vim
-  use 'svermeulen/vimpeccable'
-  use 'themercorp/themer.lua'
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    cmd = ':TSUpdate',
-    config = function()
-      require'nvim-treesitter.configs'.setup {
-        ensure_installed = "all",
-        highlight = {
-          enable = true,
-        },
-        incremental_selection = { enable = true },
-        textobjects = { enable = true },
-        indent = {
-            enable = true
-        },
-      }
-    end
-  }
-
-  -- Sidebar
-  use 'antoinemadec/FixCursorHold.nvim'
-  use 'lambdalisue/nerdfont.vim'
-  use 'lambdalisue/fern.vim'
-  use 'lambdalisue/fern-renderer-nerdfont.vim'
-
-  -- Colorschemes
-  use 'morhetz/gruvbox'
-
-  -- Project search and buffer management
-  use { 
-    'Shougo/denite.nvim',
-    run = ':UpdateRemotePlugins'
-  }
-
-  -- Commenting
-  use 'tomtom/tcomment_vim'
-
-  -- Git
-  use 'tanvirtin/vgit.nvim'
-
-  -- Chrome integration
-  use { 
-    'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end
-  }
-
-  -- motion
-  use 'phaazon/hop.nvim'
+require "paq" {
+  "savq/paq-nvim";                  -- Let Paq manage itself
 
   -- LSP
-  use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
-  use 'euclidianAce/BetterLua.vim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-lua/popup.nvim'
+  -- 'neovim/nvim-lspconfig';
+  -- 'nvim-lua/completion-nvim';
+
+  -- lua
+  -- 'euclidianAce/BetterLua.vim';
+  'nvim-lua/plenary.nvim';
+  -- 'nvim-lua/popup.nvim';
+
+  -- Firefox editing
+  {
+    'subnut/nvim-ghost.nvim',
+    run = ':call nvim_ghost#installer#install()'
+  };
+
+  -- Lua/vim
+  'svermeulen/vimpeccable';
+  'themercorp/themer.lua';
+
+  { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate" };
+
+  -- Sidebar
+  'antoinemadec/FixCursorHold.nvim';
+  'lambdalisue/nerdfont.vim';
+  'lambdalisue/fern.vim';
+  'lambdalisue/fern-renderer-nerdfont.vim';
+
+  -- Colorschemes
+  'morhetz/gruvbox';
+
+  -- Commenting
+  'tomtom/tcomment_vim';
+
+  -- Git
+  'tanvirtin/vgit.nvim';
+
+  -- Chrome integration
+  -- {
+  --   'glacambre/firenvim',
+  --   run = function() vim.fn['firenvim#install'](0) end
+  -- };
+
+  -- motion
+  'phaazon/hop.nvim';
+
+  -- Project search and buffer management
+  'nvim-telescope/telescope.nvim';
 
   -- Debugging
-  use 'puremourning/vimspector'
-  -- use 'mfusenegger/nvim-dap'
+  'puremourning/vimspector';
+  -- 'mfusenegger/nvim-dap'
 
   -- Auto-completion
-  use 'dense-analysis/ale'
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
+  'dense-analysis/ale';
+  'hrsh7th/nvim-cmp';
+  'hrsh7th/cmp-nvim-lsp';
+  'hrsh7th/cmp-buffer';
+  'hrsh7th/cmp-path';
+  -- 'hrsh7th/cmp-runline';
+  'hrsh7th/vim-vsnip';
+  'hrsh7th/vim-vsnip-integ';
+  'L3MON4D3/LuaSnip';
+  'saadparwaiz1/cmp_luasnip';
 
   -- Snippets
-  use 'SirVer/ultisnips'
-  use 'honza/vim-snippets'
-  use 'Shougo/neosnippet.vim'
-  use 'Shougo/neosnippet-snippets'
+  'SirVer/ultisnips';
+  'honza/vim-snippets';
+  'Shougo/neosnippet.vim';
+  'Shougo/neosnippet-snippets';
 
   -- Programming Languages
-  use { 'tjdevries/nlua.nvim',             ft = { 'lua', 'vim' } }
-  use { 'preservim/vimux',                 ft = { 'rust' } }
-  use { 'rust-lang/rust.vim',              ft = { 'rust' } }
-  use { 'jtdowney/vimux-cargo',            ft = { 'rust' } }
-  use { 'vim-ruby/vim-ruby',               ft = { 'ruby', 'erb' } }
-  use { 'tpope/vim-rails',                 ft = { 'ruby', 'erb' } }
-  use { 'tpope/vim-rbenv',                 ft = { 'ruby', 'erb' } }
-  use { 'tpope/vim-bundler',               ft = { 'ruby', 'erb' } }
-  use { 'plasticboy/vim-markdown',         ft = { 'markdown' } }
-  use { 'yaymukund/vim-rabl',              ft = { 'rabl' } }
-  use { 'cakebaker/scss-syntax.vim',       ft = { 'vue', 'scss','sass' } }
-  use { 'hail2u/vim-css3-syntax',          ft = { 'vue', 'css'} }
-  use { 'leafOfTree/vim-vue-plugin',       ft = { 'vue' } }
-  use { 'isRuslan/vim-es6',                ft = { 'vue', 'javascript' } }
-  use { 'Quramy/tsuquyomi',                ft = { 'typescript', 'vue', run = 'make -f make_mac.mak' } }
-  use { 'HerringtonDarkholme/yats.vim',    ft = { 'typescript', 'vue' } }
-  use 'ekalinin/Dockerfile.vim'
-  use 'hashivim/vim-vagrant'
-  use 'gko/vim-coloresque'
+  'tjdevries/nlua.nvim';
+  'preservim/vimux';
+  'rust-lang/rust.vim';
+  'jtdowney/vimux-cargo';
+  'vim-ruby/vim-ruby';
+  'tpope/vim-rails';
+  'tpope/vim-rbenv';
+  'tpope/vim-bundler';
+  'plasticboy/vim-markdown';
+  'yaymukund/vim-rabl';
+  'cakebaker/scss-syntax.vim';
+  'hail2u/vim-css3-syntax';
+  'leafOfTree/vim-vue-plugin';
+  'isRuslan/vim-es6';
+  'Quramy/tsuquyomi';
+  'HerringtonDarkholme/yats.vim';
+  'ekalinin/Dockerfile.vim';
+  'hashivim/vim-vagrant';
+  'gko/vim-coloresque';
 
   -- Other
-  use 'kiurchv/asdf.plugin.zsh'
-  use 'szw/vim-tags'
-  use 'mhinz/vim-startify'
-  use 'moll/vim-bbye' -- Buffer delete
-  use 'editorconfig/editorconfig-vim'
-  use 'bronson/vim-trailing-whitespace'
-  use 'christoomey/vim-tmux-navigator'
-  use 'wellle/tmux-complete.vim'
-
-end)
+  'kiurchv/asdf.plugin.zsh';
+  'szw/vim-tags';
+  'mhinz/vim-startify';
+  'moll/vim-bbye'; -- Buffer delete
+  -- 'editorconfig/editorconfig-vim';
+  'bronson/vim-trailing-whitespace';
+  'christoomey/vim-tmux-navigator';
+  'wellle/tmux-complete.vim';
+}

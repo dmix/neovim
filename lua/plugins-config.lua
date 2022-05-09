@@ -245,6 +245,16 @@ cmd('syntax on')
 g.NVIM_TUI_ENABLE_TRUE_COLOR = 1
 g.termguicolors = 1
 
+-- Ghost editor
+vim.api.nvim_exec([[
+  " Multiple autocommands can be specified like so -
+  augroup nvim_ghost_user_autocommands
+    au User www.reddit.com,www.stackoverflow.com set filetype=markdown
+    au User www.reddit.com,www.github.com set filetype=markdown
+    au User *github.com set filetype=markdown
+  augroup END
+]], true)
+
 -- Treesitter
 --------------------------------------------------------------------------------
 --
@@ -253,7 +263,7 @@ g.termguicolors = 1
 -- if cmd("exists('g:started_by_firenvim')") then
 --   -- Setup nvim-cmp.
 --   local cmp = require'cmp'
---   
+--
 --   cmp.enabled = false
 --   cmp.setup({
 --     enabled = false
@@ -262,3 +272,16 @@ g.termguicolors = 1
 --   cmd('colorscheme onehalflight')
 --   o.guifont = 'Monaco:h20'
 -- end
+--
+
+-- Denite
+--------------------------------------------------------------------------------
+
+-- Define mappings
+vim.api.nvim_exec([[
+" Find files using Telescope command-line sugar.
+nnoremap <leader>p <cmd>Telescope find_files<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+" nnoremap <leader>g <cmd>Telescope live_grep<cr>
+" nnoremap <leader>h <cmd>Telescope help_tags<cr>
+]], true)

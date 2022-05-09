@@ -3,9 +3,6 @@
 -- Neovim Config
 --------------------------------------------------------------------------------
 
-require('plugins')
-require('plugins-config')
-
 -- Set up python:
 --   brew install pyenv pyenv-virtualenv
 --   pyenv install 3.6.1
@@ -17,7 +14,6 @@ local vimp = require('vimp')
 local cmd = vim.cmd
 local g = vim.g
 local opt = vim.o
-local b = vim.b
 
 -- Settings
 --------------------------------------------------------------------------------
@@ -25,7 +21,6 @@ g.mapleader = ' '
 opt.wrap = false
 opt.clipboard = 'unnamedplus'
 opt.spell = false
-cmd('filetype off')
 
 opt.backspace = 'indent,eol,start'
 opt.nrformats = 'octal' -- was equals neg
@@ -41,7 +36,7 @@ opt.cursorline= true
 opt.showcmd = false
 
 -- indent
-opt.autoindent= true
+opt.autoindent = true
 opt.smartindent= true
 opt.cindent = 1
 
@@ -113,8 +108,8 @@ opt.ttimeoutlen = 50
 -- o.shortmess +=A
 
 -- Use experimental filetype.lua
-g.do_filetype_lua= true
-g.did_load_filetypes = false
+-- g.do_filetype_lua= true
+-- g.did_load_filetypes = false
 
 -- Python
 --------------------------------------------------------------------------------
@@ -143,3 +138,7 @@ cmd('autocmd FileType lua,eruby,sass,scss,css set shiftwidth=2 expandtab')
 
 cmd('autocmd FileType go autocmd BufWritePre <buffer> GoFmt')
 cmd('autocmd FileType * autocmd BufWritePre <buffer> :FixWhitespace')
+
+require('plugins')
+require('plugins-config')
+require('keys')
