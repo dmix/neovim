@@ -128,9 +128,9 @@ cmd('autocmd BufNewFile,BufRead *.html.eex o.syntax=eelixir')
 cmd('autocmd BufNewFile,BufRead *.md o.wrap ft=tasks')
 
 cmd('autocmd FileType c,cpp,java,php,ruby,json,yaml,toml,javascript,html,css,scss,elixir,markdown,jinja,jinja.html autocmd BufWritePre <buffer> %s/\\s\\+$//e')
-cmd('autocmd FileType vue autocmd BufWritePre <buffer> :call PreciseTrimWhiteSpace()')
+-- cmd('autocmd FileType vue autocmd BufWritePre <buffer> :call PreciseTrimWhiteSpace()')
 cmd('autocmd FileType vue syntax sync fromstart')
-cmd('autocmd FileType javascript,go,eelixir,make,erlang,html,eruby,vue,scss,sass,css call g:CustomFormatting()')
+-- cmd('autocmd FileType javascript,go,eelixir,make,erlang,html,eruby,vue,scss,sass,css call g:CustomFormatting()')
 
 cmd('autocmd FileType yaml,haskell,go,eelixir,vim,zsh,rust,javascript,vue,html,eelixir,typescript,json set tabstop=4 shiftwidth=4 expandtab')
 cmd('autocmd FileType make,erlang setlocal noexpandtab')

@@ -19,8 +19,9 @@ require "paq" {
   "savq/paq-nvim";                  -- Let Paq manage itself
 
   -- LSP
-  -- 'neovim/nvim-lspconfig';
-  -- 'nvim-lua/completion-nvim';
+  'williamboman/nvim-lsp-installer';
+  'neovim/nvim-lspconfig';
+  --'nvim-lua/completion-nvim';
 
   -- lua
   -- 'euclidianAce/BetterLua.vim';
