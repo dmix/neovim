@@ -1,7 +1,6 @@
 --------------------------------------------------------------------------------
-
 -- Neovim Config
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 -- Set up python:
 --   brew install pyenv pyenv-virtualenv
@@ -9,7 +8,10 @@
 --   pyenv virtualenv 3.6.1 neovim3
 --   pyenv activate neovim3
 --   pip install neovim
-
+--
+-- Install PAQ:
+--   git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
+--
 local vimp = require('vimp')
 local cmd = vim.cmd
 local g = vim.g
